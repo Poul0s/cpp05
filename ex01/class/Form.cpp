@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:51:53 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:08:03 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/03 19:21:18 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 // constructor/destructor
 Form::Form(std::string name, short requireSign, short requireExec) : _name(name), _requireSign(requireSign), _requireExec(requireExec)
 {
+	if (requireSign < 1 || requireExec < 1)
+		throw Form::GradeTooHighException();
+	if (requireSign > 150 || requireExec > 150)
+		throw Form::GradeTooLowException();
 	this->_signed = false;
 }
 
@@ -38,8 +42,8 @@ std::ostream&	operator<<( std::ostream&output, const Form& form )
 {
 	output << "Form " << form.getName() << " : " << std::endl;
 	output << "\tsigned : " << (form.getSigned() ? "true" : "false") << std::endl;
-	output << "\required grade for sign : " << form.getRequireSign() << std::endl;
-	output << "\required grade for exec : " << form.getRequireExec();
+	output << "\trequired grade for sign : " << form.getRequireSign() << std::endl;
+	output << "\trequired grade for exec : " << form.getRequireExec();
 	return (output);
 }
 
@@ -74,12 +78,12 @@ void		Form::beSigned(const Bureaucrat &author)
 }
 
 // nested class
-const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
+const char	*Form::GradeTooHighException::what(void) const throw()
 {
 	return "Form : grade too high.";
 }
 
-const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
+const char	*Form::GradeTooLowException::what(void) const throw()
 {
 	return "Form : grade too low.";
 }

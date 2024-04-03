@@ -6,11 +6,12 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:19:30 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:01:52 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/03 19:21:48 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
+#include <sstream>
 
 void	test1(int &exit_code)
 {
@@ -18,6 +19,7 @@ void	test1(int &exit_code)
 	{
 		Form form1 = Form("f1", -2, 2);
 		exit_code += 1;
+		std::cerr << "Test 1 failed : Too high exception not throw (f1)" << std::endl;
 	}
 	catch (Form::GradeTooHighException &err)
 	{
@@ -25,7 +27,7 @@ void	test1(int &exit_code)
 		{
 			Form form2 = Form("f2", 2, -2);
 			exit_code += 1;
-			
+			std::cerr << "Test 1 failed : Too high exception not throw (f2)" << std::endl;
 		}
 		catch (Form::GradeTooHighException &err)
 		{
@@ -41,6 +43,7 @@ void	test2(int &exit_code)
 	{
 		Form form1 = Form("f1", 151, 2);
 		exit_code += 1;
+		std::cerr << "Test 2 failed : Too low exception not throw (f1)" << std::endl;
 	}
 	catch (Form::GradeTooLowException &err)
 	{
@@ -48,7 +51,7 @@ void	test2(int &exit_code)
 		{
 			Form form2 = Form("f2", 2, 151);
 			exit_code += 1;
-			
+			std::cerr << "Test 2 failed : Too low exception not throw (f2)" << std::endl;
 		}
 		catch (Form::GradeTooLowException &err)
 		{
@@ -98,17 +101,17 @@ void	test4(int &exit_code)
 		std::cerr << "Test 4 failed : bad copy (name)." << std::endl;
 		exit_code += 1;
 	}
-	else if (form1.getRequireSign() != 2 || form1.getRequireSign() != 5)
+	else if (form1.getRequireSign() != 2 || form2.getRequireSign() != 5)
 	{
-		std::cerr << "Test 4 failed : bad copy (require sign)." << std::endl;
+		std::cerr << "Test 4 failed : bad copy (required sign)." << std::endl;
 		exit_code += 1;
 	}
-	else if (form1.getRequireExec() != 2 || form1.getRequireExec() != 5)
+	else if (form1.getRequireExec() != 2 || form2.getRequireExec() != 5)
 	{
-		std::cerr << "Test 4 failed : bad copy (require exec)." << std::endl;
+		std::cerr << "Test 4 failed : bad copy (required exec)." << std::endl;
 		exit_code += 1;
 	}
-	else if (form1.getSigned() != false || form1.getSigned() != false)
+	else if (form1.getSigned() != false || form2.getSigned() != false)
 	{
 		std::cerr << "Test 4 failed : bad copy (signed)." << std::endl;
 		exit_code += 1;
@@ -135,7 +138,7 @@ void	test5(int &exit_code)
 	{
 		try
 		{
-			f2.beSigned(f2);
+			f2.beSigned(b1);
 			std::cerr << "Test 5 failed : bad sign permission." << std::endl;
 			exit_code++;
 		}
@@ -185,8 +188,8 @@ void	test7(int &exit_code)
 	std::stringstream	expected_str_stream;
 	expected_str_stream << "Form f1 : " << std::endl;
 	expected_str_stream << "\tsigned : false" << std::endl;
-	expected_str_stream << "\required grade for sign : 5" << std::endl;
-	expected_str_stream << "\required grade for exec : 6";
+	expected_str_stream << "\trequired grade for sign : 5" << std::endl;
+	expected_str_stream << "\trequired grade for exec : 6";
 	std::string			expected_str = expected_str_stream.str();
 
 	std::stringstream	current_str_stream;
@@ -196,7 +199,7 @@ void	test7(int &exit_code)
 	std::cout << "res : " << current_str << std::endl;
 	if (current_str != expected_str)
 	{
-		std::cout << "expected : " << expected_str_stream << std::endl;
+		std::cout << "expected : " << expected_str << std::endl;
 		std::cerr << "Test 7 failed : bad operator '<<'" << std::endl;
 		exit_code++;
 	}
@@ -206,7 +209,7 @@ void	test7(int &exit_code)
 
 void	test_launcher(int &exit_code, void (*test_fct)(int &))
 {
-	try 
+	try
 	{
 		(*test_fct)(exit_code);
 	}
