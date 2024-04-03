@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  ex00:
 
     runs-on: ubuntu-latest
 
@@ -19,11 +19,35 @@ jobs:
     - name: run tests ex00
       run: ./ex00/Bureaucrat
 
-  exec:
+  ex01:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: run tests ex00
-      run: ./ex00/Bureaucrat
+    - name: compilation of ex01
+      run: make -C ./ex01
+    - name: run tests ex01
+      run: ./ex01/Bureaucrat
+
+  ex02:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: compilation of ex02
+      run: make -C ./ex02
+    - name: run tests ex02
+      run: ./ex02/Bureaucrat
+
+  ex03:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: compilation of ex03
+      run: make -C ./ex03
+    - name: run tests ex03
+      run: ./ex03/Bureaucrat
