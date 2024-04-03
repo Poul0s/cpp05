@@ -18,3 +18,12 @@ jobs:
       run: make -C ./ex00
     - name: run tests ex00
       run: ./ex00/Bureaucrat
+
+  exec:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: run tests ex00
+      run: ./ex00/Bureaucrat
