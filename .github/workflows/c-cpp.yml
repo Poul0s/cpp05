@@ -17,4 +17,4 @@ jobs:
     - name: compilation of ex00
       run: make -C ./ex00
     - name: run tests ex00
-      run: ./ex00/bureaucrat
+      run: ./ex00/Bureaucrat
