@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 10:51:38 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 16:15:21 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/03 16:21:38 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	test1(int &exit_code)
 		Bureaucrat bureaucrat1 = Bureaucrat("aaaa", 0);
 		exit_code += 1;
 	}
-	catch (Bureaucrat::GradeTooHighException)
+	catch (Bureaucrat::GradeTooHighException &err)
 	{
 		std::cout << "Test 1 success." << std::endl;
 	}
@@ -33,7 +33,7 @@ void	test2(int &exit_code)
 		Bureaucrat bureaucrat1 = Bureaucrat("aaaa", 151);
 		exit_code += 1;
 	}
-	catch (Bureaucrat::GradeTooLowException)
+	catch (Bureaucrat::GradeTooLowException &err)
 	{
 		std::cout << "Test 2 success." << std::endl;
 	}
