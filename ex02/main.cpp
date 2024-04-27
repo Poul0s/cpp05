@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 19:24:34 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/27 17:08:09 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/27 18:06:42 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	test3(int &exit_code)
 		alice.executeForm(*form);
 		boss.executeForm(*form);
 	}
+	delete form;
 }
 
 void	test4(int &exit_code)
@@ -121,6 +122,7 @@ void	test4(int &exit_code)
 		boss.executeForm(*form);
 		boss.executeForm(*form);
 	}
+	delete form;
 }
 
 void	test5(int &exit_code)
@@ -147,6 +149,7 @@ void	test5(int &exit_code)
 		alice.executeForm(*form);
 		boss.executeForm(*form);
 	}
+	delete form;
 }
 
 void	test_launcher(int &exit_code, void (*test_fct)(int &), int test_nb)
