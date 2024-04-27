@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 09:02:22 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:37:04 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/07 15:01:35 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class	Bureaucrat
 		void		promote(void);
 		void		demote(void);
 		void		signForm(AForm &form);
+		void		executeForm(AForm const & form);
 
 		// nested classes
 		class	GradeTooHighException;

@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:30:30 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:35:36 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/07 15:23:00 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 # include "Bureaucrat.hpp"
 
 class	Bureaucrat;
-class	Form
+class	AForm
 {
 	public:
 		// constructor/destructor
-		Form(std::string name, short requireSign, short requireExec);
-		Form(const Form &copy);
-		virtual ~Form(void);
+		AForm(std::string name, short requireSign, short requireExec);
+		AForm(const AForm &copy);
+		virtual ~AForm(void);
 		
 		// operator overload
-		Form	&operator=(const Form &copy);
+		virtual AForm	&operator=(const AForm &copy);
 
 		// member functions
 		std::string		getName(void) const;
@@ -38,6 +38,7 @@ class	Form
 		// nested class
 		class	GradeTooHighException;
 		class	GradeTooLowException;
+		class	ExecUnsignedException;
 
 	private:
 		const std::string	_name;
@@ -46,15 +47,21 @@ class	Form
 		bool				_signed;
 };
 
-std::ostream&	operator<<( std::ostream&output, const Form& form );
+std::ostream&	operator<<( std::ostream&output, const AForm& Aform );
 
-class Form::GradeTooHighException : public std::exception
+class AForm::GradeTooHighException : public std::exception
 {
 	public:
 		const char	*what(void) const throw();
 };
 
-class Form::GradeTooLowException : public std::exception
+class AForm::GradeTooLowException : public std::exception
+{
+	public:
+		const char	*what(void) const throw();
+};
+
+class AForm::ExecUnsignedException : public std::exception
 {
 	public:
 		const char	*what(void) const throw();

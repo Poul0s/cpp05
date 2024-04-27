@@ -6,11 +6,11 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:51:53 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:35:00 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/27 16:40:30 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // constructor/destructor
 AForm::AForm(std::string name, short requireSign, short requireExec) : _name(name), _requireSign(requireSign), _requireExec(requireExec)
@@ -86,4 +86,9 @@ const char	*AForm::GradeTooHighException::what(void) const throw()
 const char	*AForm::GradeTooLowException::what(void) const throw()
 {
 	return "Form : grade too low.";
+}
+
+const char	*AForm::ExecUnsignedException::what(void) const throw()
+{
+	return "Form : Trying to execute unsigned form.";
 }

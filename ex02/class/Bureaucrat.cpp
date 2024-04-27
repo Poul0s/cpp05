@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 09:55:35 by psalame           #+#    #+#             */
-/*   Updated: 2024/04/03 19:20:46 by psalame          ###   ########.fr       */
+/*   Updated: 2024/04/27 16:40:26 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		Bureaucrat::demote(void)
 	this->_grade++;
 }
 
-void		Bureaucrat::signForm(Form &form)
+void		Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -82,6 +82,20 @@ void		Bureaucrat::signForm(Form &form)
 	{
 		std::cout << this->_name << " couldn't sign " << form.getName() 
 			<< " because " << err.what() << "." << std::endl;
+	}
+}
+
+void		Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception &err)
+	{
+		std::cout << this->_name << " failed to execute " << form.getName()
+			<< " : " << err.what() << std::endl;
 	}
 }
 

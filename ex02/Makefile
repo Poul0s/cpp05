@@ -1,10 +1,13 @@
 CC	=	c++
 
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MD
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MD -g
 
 SRC		=	main.cpp \
 			class/Bureaucrat.cpp \
 			class/AForm.cpp \
+			class/PresidentialPardonForm.cpp \
+			class/RobotomyRequestForm.cpp \
+			class/ShrubberyCreationForm.cpp \
 
 OBJ		=	$(addprefix obj/, $(SRC:.cpp=.o))
 
@@ -33,6 +36,7 @@ fclean: clean
 
 re: fclean all
 
+-include $(OBJS:.o=.d)
+
 .PHONY: all clean fclean re
 
--include $(OBJS:.o=.d)

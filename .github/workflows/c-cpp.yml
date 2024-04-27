@@ -17,7 +17,7 @@ jobs:
     - name: compilation of ex00
       run: make -C ./ex00
     - name: run tests ex00
-      run: ./ex00/Bureaucrat
+      run: valgrind --leak-check=full --track-fds=yes ./ex00/Bureaucrat
 
   ex01:
 
@@ -28,7 +28,7 @@ jobs:
     - name: compilation of ex01
       run: make -C ./ex01
     - name: run tests ex01
-      run: ./ex01/Bureaucrat
+      run: valgrind  --leak-check=full --track-fds=yes ./ex01/Bureaucrat
 
   ex02:
 
@@ -39,7 +39,7 @@ jobs:
     - name: compilation of ex02
       run: make -C ./ex02
     - name: run tests ex02
-      run: ./ex02/Bureaucrat
+      run: valgrind  --leak-check=full --track-fds=yes ./ex02/Bureaucrat
 
   ex03:
 
@@ -50,4 +50,4 @@ jobs:
     - name: compilation of ex03
       run: make -C ./ex03
     - name: run tests ex03
-      run: ./ex03/Bureaucrat
+      run: valgrind  --leak-check=full --track-fds=yes ./ex03/Bureaucrat
