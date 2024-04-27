@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: "install dependencies"
-      run: apt install valgrind -y
+      run: sudo apt install valgrind -y
     - name: compilation of ex00
       run: make -C ./ex00
     - name: run tests ex00
@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: "install dependencies"
-      run: apt install valgrind -y
+      run: sudo apt install valgrind -y
     - name: compilation of ex01
       run: make -C ./ex01
     - name: run tests ex01
@@ -41,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: "install dependencies"
-      run: apt install valgrind -y
+      run: sudo apt install valgrind -y
     - name: compilation of ex02
       run: make -C ./ex02
     - name: run tests ex02
@@ -54,7 +54,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: "install dependencies"
-      run: apt install valgrind -y
+      run: sudo apt install valgrind -y
     - name: compilation of ex03
       run: make -C ./ex03
     - name: run tests ex03
